@@ -1,14 +1,16 @@
+const cache = new Map<string, number>();
+
 export const countPossibleSecrets = (length: number, base: number): number => {
-    if (length <= 0) {
-        return 1;
-    }
-    if (length > base) {
-        return 0;
-    }
-    let permutations = 1;
-    for (let i = 0; i < length; i++) {
-        permutations *= (base - i);
+    if (length <= 0) return 1;
+    if (length > base) return 0;
+
+    const cacheKey = `${length}-${base}`;
+    if (cache.has(cacheKey)) {
+        return cache.get(cacheKey)!;
     }
 
-    return permutations;
+    const result = base * countPossibleSecrets(length - 1, base - 1);
+    cache.set(cacheKey, result);
+
+    return result;
 };
