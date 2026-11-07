@@ -25,6 +25,6 @@ describe('evaluateGuess', () => {
     it('should be case-insensitive for hex digits', () => {
         expect(evaluateGuess('1a2b', '1A2B')).toEqual({ bulls: 4, cows: 0 });
         expect(evaluateGuess('1a2b', 'B2A1')).toEqual({ bulls: 0, cows: 4 });
-        expect(evaluateGuess('1A2F', '1a3f')).toEqual({ bulls: 2, cows: 0 });
+        expect(evaluateGuess('1A2F', '1a3f')).toEqual({ bulls: 3, cows: 0 });
     });
 });
